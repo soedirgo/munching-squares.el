@@ -21,7 +21,7 @@
 
 ;;; Code:
 
-(eval-when-compile (require 'cl-lib))
+(require 'cl-macs)
 
 (defun munch-compute (size n list)
   "Compute a sequence of coordinates for Munching Squares.
@@ -43,12 +43,10 @@
               (munch-compute half (* 2 n) (nreverse result))))))
 
 (defun munch-draw (pixel list)
-  "PIXEL. LIST."
+  "Update each coordinate in LIST with PIXEL."
   (cl-loop for (x y) in list and i from 0 do
        (goto-char (point-min))
        (forward-line (1- y))
-       ;; (goto-line (1+ y))
-       ;; (beginning-of-line)
        (forward-char (* 2 x))
        (delete-char 2)
        (insert pixel)
