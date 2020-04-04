@@ -63,7 +63,7 @@
     (insert "                                                                \n"))
   (insert "\nType Control-G to stop.")
   (let ((list (munch-compute 32 1 '((0 0))))
-        (pixels (list "[]" "  " nil)))
+        (pixels (list "\u2588\u2588" "  " nil)))
     (setf (cdr (cdr pixels)) pixels)
     (cl-loop
        (munch-draw (cl-first pixels) list)
